@@ -51,29 +51,26 @@ const Signup = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-full bg-black md:bg-transparent">
-      {/* Background Image - show on all screens */}
+    <div className="relative min-h-screen w-full bg-[#141414]">
+      {/* Generic Dark Background Image (No logos) */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat block"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat hidden md:block"
         style={{
           backgroundImage:
-            "url('https://assets.nflxext.com/ffe/siteui/vlv3/dace47b4-a5cb-4357-8042-6975eb142b3c/f8e918c7-4352-4e08-8e6f-12dd5112526e/US-en-20231023-popsignuptwoithreads-perspective_alpha_website_large.jpg')",
+            "url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=2070&auto=format&fit=crop')",
+          opacity: 0.4
         }}
-      >
-        <div className="absolute inset-0 bg-black/50" />
-      </div>
+      ></div>
 
       {/* Signup Form Container */}
-      <div className="relative z-10 flex flex-col min-h-screen items-center justify-center py-10 px-4">
-        <Link to="/login" className="mb-6">
-          <h1 className="text-netflix-red text-5xl font-bold cursor-pointer">
-            NETFLIX
-          </h1>
-        </Link>
-        <div className="bg-black/80 border border-transparent rounded-lg px-8 py-12 md:px-16 md:py-16 w-full max-w-[450px] mx-auto shadow-xl">
-          <h2 className="text-white text-[32px] font-bold mb-9">Sign Up</h2>
+      <div className="relative z-10 flex flex-col min-h-screen items-center justify-center py-10 px-4 md:px-0">
+        <div 
+          className="bg-black/80 rounded-md w-full max-w-[450px] mx-auto text-left shadow-2xl flex flex-col"
+          style={{ padding: '60px 68px 40px', minHeight: '550px' }}
+        >
+          <h1 className="text-white text-[32px] font-bold mb-7">Sign Up</h1>
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <FloatingLabelInput
               id="displayName"
               type="text"
@@ -109,13 +106,13 @@ const Signup = () => {
             <button
               type="submit"
               disabled={loading}
-              className="bg-[#e50914] text-white font-medium text-lg py-3 rounded mt-4 hover:bg-[#c11119] transition duration-200 ease-in-out"
+              className="bg-[#e50914] text-white font-medium text-base rounded mt-6 hover:bg-[#c11119] transition duration-200 ease-in-out h-[48px]"
             >
               {loading ? "Creating Account..." : "Sign Up"}
             </button>
           </form>
 
-          <div className="mt-14 text-[#737373] text-[16px]">
+          <div className="mt-16 text-[#737373] text-[16px]">
             Already have an account?{" "}
             <Link
               to="/login"
@@ -125,7 +122,7 @@ const Signup = () => {
             </Link>
           </div>
 
-          <div className="mt-5 text-[13px] text-[#8c8c8c] text-left leading-tight">
+          <div className="mt-4 text-[13px] text-[#8c8c8c] text-left leading-tight">
             By signing up, you agree to our{" "}
             <span className="text-[#0071eb] hover:underline cursor-pointer">
               Terms of Use

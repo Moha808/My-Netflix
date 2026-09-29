@@ -21,17 +21,21 @@ export const AuthProvider = ({ children }) => {
   const signUp = async (email, password, displayName) => {
     const result = await createUserWithEmailAndPassword(auth, email, password);
     await updateProfile(result.user, { displayName });
+    setUser(auth.currentUser);
     return result;
   };
 
   // Sign in with email and password
-  const signIn = (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password);
+  const signIn = async (email, password) => {
+    const result = await signInWithEmailAndPassword(auth, email, password);
+    setUser(result.user);
+    return result;
   };
 
   // Sign out
-  const logOut = () => {
-    return signOut(auth);
+  const logOut = async () => {
+    await signOut(auth);
+    setUser(null);
   };
 
   // Listen for auth state changes

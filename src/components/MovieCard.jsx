@@ -22,10 +22,11 @@ const MovieCard = ({
 
   return (
     <div
-      className="relative flex-shrink-0 cursor-pointer group"
+      className="relative flex-shrink-0 cursor-pointer group movie-card"
       style={{ width: isLargeRow ? "170px" : "240px" }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={() => onMoreInfo && onMoreInfo(movie)}
     >
       {/* Movie Poster/Backdrop Image */}
       <img
@@ -39,7 +40,7 @@ const MovieCard = ({
 
       {/* Hover Overlay - Netflix-style expanded card */}
       {isHovered && (
-        <div className="absolute left-0 right-0 top-full bg-netflix-dark rounded-b-md shadow-2xl z-50 p-3 transform origin-top animate-in">
+        <div className="hidden md:block absolute left-0 right-0 top-full bg-netflix-dark rounded-b-md shadow-2xl z-50 p-3 transform origin-top animate-in">
           {/* Title */}
           <h3 className="text-white text-xs font-bold mb-2 truncate">
             {title}

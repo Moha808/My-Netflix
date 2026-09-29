@@ -53,9 +53,7 @@ const Navbar = () => {
       <div className="flex items-center gap-2 md:gap-8">
         {/* Netflix Logo */}
         <Link to="/" className="flex-shrink-0">
-          <h1 className="text-netflix-red text-xl md:text-3xl font-extrabold tracking-wider cursor-pointer">
-            NETFLIX
-          </h1>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" className="h-6 md:h-8" />
         </Link>
 
         {/* Navigation Links (hidden on mobile) */}
@@ -97,27 +95,29 @@ const Navbar = () => {
       <div className="flex items-center gap-3 md:gap-5">
         {/* Search Bar */}
         <div className="relative flex items-center">
-          {showSearch && (
-            <form onSubmit={handleSearch} className="flex items-center">
+          {showSearch ? (
+            <form onSubmit={handleSearch} className="flex items-center bg-black/80 border border-white px-2 py-1 transition-all duration-300">
+              <FaSearch className="text-white text-sm mr-2" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Titles, people, genres"
                 autoFocus
-                className="bg-netflix-black/90 border border-netflix-light-gray text-white text-sm px-3 py-1.5 w-40 md:w-56 outline-none rounded-sm"
+                className="bg-transparent text-white text-sm w-40 md:w-56 outline-none"
                 onBlur={() => {
                   if (!searchQuery) setShowSearch(false);
                 }}
               />
             </form>
+          ) : (
+            <button
+              onClick={() => setShowSearch(true)}
+              className="text-white text-lg hover:text-netflix-text transition-colors ml-2"
+            >
+              <FaSearch />
+            </button>
           )}
-          <button
-            onClick={() => setShowSearch(!showSearch)}
-            className="text-white text-lg hover:text-netflix-text transition-colors ml-2"
-          >
-            <FaSearch />
-          </button>
         </div>
 
         {/* Notifications */}

@@ -12,6 +12,16 @@ import ProfileSelection from "./pages/ProfileSelection";
 import Search from "./pages/Search";
 import MyList from "./pages/MyList";
 
+// Auth route wrapper to redirect authenticated users
+const PublicRoute = ({ children }) => {
+  const { user, loading } = useAuth();
+  
+  if (loading) return <LoadingScreen />;
+  if (user) return <Navigate to="/" replace />;
+  
+  return children;
+};
+
 const App = () => {
   const { loading } = useAuth();
 
@@ -23,8 +33,8 @@ const App = () => {
   return (
     <Routes>
       {/* Public Routes */}
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
+      <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
+      <Route path="/signup" element={<PublicRoute><Signup /></PublicRoute>} />
 
       {/* Protected Routes */}
       <Route

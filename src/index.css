@@ -1,9 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 /* ===== Netflix Custom Theme ===== */
 @theme {
   --color-netflix-red: #e50914;
-  --color-netflix-red-hover: #f40612;
+  --color-netflix-red-hover: #c11119;
   --color-netflix-black: #141414;
   --color-netflix-dark: #181818;
   --color-netflix-gray: #2f2f2f;
